@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
         "dependency",
-        "configs"
+        "configs",
+        "refactor"
     ]
 }
