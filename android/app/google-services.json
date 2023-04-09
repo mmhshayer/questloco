@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "394347356170",
+    "project_id": "questloco",
+    "storage_bucket": "questloco.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:394347356170:android:0ff3508ee2a3187cda3ff3",
+        "android_client_info": {
+          "package_name": "com.example.questloco"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "394347356170-qjr1hd5iu5orsk0hrr5jvf3h5q5krdpi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMS6jqd2a2SirNHDJv3U-xcaPu7RcIAvA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "394347356170-qjr1hd5iu5orsk0hrr5jvf3h5q5krdpi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
