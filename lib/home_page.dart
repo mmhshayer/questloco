@@ -1,28 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:questloco/sign_in_sign_out_button_widget.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.title});
+import 'auth_controller.dart';
 
-  final String title;
+class HomePage extends StatelessWidget {
+  final AuthController authController = Get.put(AuthController());
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text('Home Page'),
+        actions: [
+          SignInSignOutButton(),
+        ],
       ),
       body: Center(
         child: Column(
@@ -31,18 +25,31 @@ class _HomePageState extends State<HomePage> {
             const Text(
               'You have pushed the button this many times:',
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            Obx(() {
+              if (authController.isLoggedIn.value) {
+                return Text(
+                  authController.user.value!.email.toString(),
+                  style: Theme.of(context).textTheme.headlineSmall,
+                );
+              } else {
+                return const Text(
+                  'Not Logged In',
+                  style: TextStyle(color: Colors.red),
+                );
+              }
+            }),
+            const Text(
+              '0',
+              style: TextStyle(fontSize: 32.0),
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () {},
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }

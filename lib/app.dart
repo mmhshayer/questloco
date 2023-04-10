@@ -1,19 +1,37 @@
 import 'package:flutter/material.dart';
-
-import 'home_page.dart';
+import 'package:get/get.dart';
+import 'package:questloco/home_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class App extends StatelessWidget {
-  const App({super.key});
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
+  App({super.key});
+  
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Questloco',
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-      ),
-      home: const HomePage(title: 'Home'),
+    return FutureBuilder<SharedPreferences>(
+      future: _prefs,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return GetMaterialApp(
+            title: 'Questloco',
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              primarySwatch: Colors.green,
+            ),
+            home: HomePage(),
+          );
+        } else {
+          return const MaterialApp(
+            home: Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(),
+              ),
+            ),
+          );
+        }
+      },
     );
   }
 }

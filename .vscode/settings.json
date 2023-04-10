@@ -2,6 +2,7 @@
     "conventionalCommits.scopes": [
         "dependency",
         "configs",
-        "refactor"
+        "refactor",
+        "feat"
     ]
 }
