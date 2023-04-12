@@ -3,10 +3,12 @@ import 'package:get/get.dart';
 import 'package:questloco/presentation/widgets/sign_in_sign_out_button_widget.dart';
 
 import '../controllers/auth_controller.dart';
+import '../controllers/location_controller.dart';
 import '../widgets/map_widget.dart';
 
 class HomePage extends StatelessWidget {
   final AuthController authController = Get.put(AuthController());
+  final LocationController locationController = Get.put(LocationController());
 
   HomePage({super.key});
 
