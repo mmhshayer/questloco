@@ -1,11 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get_storage/get_storage.dart';
 
 class AuthController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
+  final box = GetStorage();
 
   Rx<User?> user = Rx<User?>(null);
   RxBool isLoggedIn = false.obs;
@@ -38,9 +39,7 @@ class AuthController extends GetxController {
     try {
       await _googleSignIn.signOut();
       await _auth.signOut();
-      await SharedPreferences.getInstance().then((prefs) {
-        prefs.remove('isLoggedIn');
-      });
+      await box.remove('isLoggedIn');
       Get.snackbar('Success', 'Signed out');
       checkLoginStatus();
     } catch (e) {
@@ -49,10 +48,9 @@ class AuthController extends GetxController {
   }
 
   void checkLoginStatus() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    isLoggedIn.value = prefs.getBool('isLoggedIn') ?? false;
+    isLoggedIn.value = box.read('isLoggedIn') ?? false;
     if (user.value != null) {
-      await prefs.setBool('isLoggedIn', true);
+      await box.write('isLoggedIn', true);
       isLoggedIn.value = true;
       Get.snackbar('Success', 'Welcome back ${user.value!.displayName}');
     }
