@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:questloco/presentation/themes/app_theme.dart';
-import 'package:questloco/home_page.dart';
+import 'package:questloco/themes/app_theme.dart';
+import 'package:questloco/presentation/pages/home_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class App extends StatelessWidget {

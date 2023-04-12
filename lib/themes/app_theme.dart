@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:questloco/presentation/themes/widget_themes/text_theme.dart';
+import 'package:questloco/themes/widget_themes/text_theme.dart';
 
 class AppTheme {
   AppTheme._();
