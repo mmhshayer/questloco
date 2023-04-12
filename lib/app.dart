@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:questloco/presentation/themes/app_theme.dart';
 import 'package:questloco/home_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -17,9 +18,11 @@ class App extends StatelessWidget {
           return GetMaterialApp(
             title: 'Questloco',
             debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              primarySwatch: Colors.green,
-            ),
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: snapshot.data?.getBool('darkMode') ?? false
+                ? ThemeMode.dark
+                : ThemeMode.light,
             home: HomePage(),
           );
         } else {
