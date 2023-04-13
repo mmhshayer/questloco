@@ -3,6 +3,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:get/get.dart';
 
+import '../../utils/map_caching.dart';
 import '../controllers/location_controller.dart';
 
 class MapWidget extends StatefulWidget {
@@ -36,6 +37,7 @@ class _MapWidgetState extends State<MapWidget> {
             TileLayer(
               urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
               subdomains: const ['a', 'b', 'c'],
+              tileProvider: CachedNetworkTileProvider(),
             ),
             MarkerLayer(
               markers: [
